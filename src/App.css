@@ -1,38 +1,218 @@
-.App {
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.App{
+  padding: 0 15px;
+}
+
+.top_menu {
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  top: 0;
+  z-index: 444;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.top_menu .filters{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .top_menu .items{
+    margin-top: 6px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .top_menu .title{
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+    .top_menu .items .item{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+    }
+
+    .top_menu .classFilter .item{
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 5px;
+    }
+
+.ship_list{
+  margin-top: 150px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 15px;
 }
+
+  .ship_list .item{
+    display: block;
+    border: 1px #222 solid;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all .1s;
+  }
+
+    .ship_list .item:hover{
+      transition: all .3s;
+      transform: translateY(-5px);
+      box-shadow: 0px 5px 6px 0px #5bc6e8;
+    }
+
+    .ship_list .item .main_info{
+      display: block;
+      height: 120px;
+      width: inherit;
+      position: relative;
+    }
+
+      .ship_list .item .main_info .header{
+        position: absolute;
+        display: block;
+        top: 6px;
+        left: 10px;
+        border-radius: 5px;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .ship_list .item .main_info img{
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+    .ship_list .item .tech_info{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      text-align: center;
+      height: 40px;
+    }
+
+      .ship_list .item .tech_info .nation{
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      .ship_list .item .tech_info .type{
+        background: rgba(0, 0, 0, 0.45);
+        border-radius: 5px;
+      }
+
+      .ship_list .item .tech_info .rank{
+        font-weight: 700;
+      }
+
+    .ship_list .item .description_info{
+      padding-top: 10px;
+      font-weight: 300;
+      font-size: 16px;
+      text-overflow: ellipsis;
+    }
+
+  .vehiclesInfoWindow .shadow{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 555;
+  }
+
+  .vehiclesInfoWindow .fullInfo{
+    display: block;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    top: 40px;
+    left: 0;
+    right: 0;
+    border-radius: 15px;
+    max-width: 500px;
+    background: #fff;
+    z-index: 666;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+    .vehiclesInfoWindow .fullInfo img.preview{
+      width: 100%;
+      max-height: 30%;
+    }
+
+      .vehiclesInfoWindow .fullInfo .description{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+        .vehiclesInfoWindow .fullInfo .description .infoItem{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+        }
+
+          .vehiclesInfoWindow .fullInfo .description .infoItem img{
+            display: block;
+            height: 30px;
+          }
+
+          .vehiclesInfoWindow .fullInfo .textInfo{
+            margin-top: 10px;
+          }
